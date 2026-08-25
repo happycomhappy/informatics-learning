@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>배우고, 탐구하고, 해결하는 정보 학습</title>
-<meta name="description" content="고등학교 정보 교과 학습 포털. 단원을 선택하고 나만의 속도로 학습을 시작하세요.">
+<meta name="robots" content="noindex, nofollow">
+<title>준비하고, 확인하고, 피드백하는 수업 관리</title>
+<meta name="description" content="고등학교 정보 교과 교사용 수업 관리 포털. 차시를 선택하면 교사용 화면이 열립니다.">
 <style>
   :root{
-    --bg:#eef1f6;
+    --bg:#eceff0;
     --surface:#ffffff;
-    --panel:#f7f8fa;
-    --line:#e3e7ee;
-    --ink:#1b2231;
-    --ink-soft:#5c6577;
-    --ink-faint:#8d96a6;
-    --nav:#26374f;
+    --panel:#f5f8f7;
+    --line:#dfe6e4;
+    --ink:#17231f;
+    --ink-soft:#546661;
+    --ink-faint:#889995;
+    --nav:#17605C;
     --radius:18px;
-    --shadow:0 1px 2px rgba(20,28,42,.05), 0 10px 26px rgba(20,28,42,.09);
-    --shadow-hi:0 2px 6px rgba(20,28,42,.07), 0 18px 42px rgba(20,28,42,.16);
+    --shadow:0 1px 2px rgba(16,40,38,.05), 0 10px 26px rgba(16,40,38,.09);
+    --shadow-hi:0 2px 6px rgba(16,40,38,.07), 0 18px 42px rgba(16,40,38,.16);
   }
 
   *{box-sizing:border-box;}
@@ -34,7 +35,7 @@
 
   /* ── 머리말 ─────────────────────────────── */
   .hero{
-    background:linear-gradient(160deg,#1f3350 0%,#2b4a72 55%,#37628f 100%);
+    background:linear-gradient(160deg,#0d3A38 0%,#12504C 55%,#17605C 100%);
     color:#fff;
     padding:58px 0 66px;
   }
@@ -85,12 +86,22 @@
     color:var(--ink-soft);
   }
   .guide-item b{color:var(--ink);font-weight:700;}
+  .guide-item code{
+    font-family:"Consolas","D2Coding",ui-monospace,monospace;
+    font-size:.86em;
+    background:#eef4f2;
+    border:1px solid #dde8e5;
+    border-radius:5px;
+    padding:1px 5px;
+    color:var(--nav);
+    white-space:nowrap;
+  }
   .guide-no{
     flex:0 0 auto;
     width:23px;height:23px;
     margin-top:2px;
     border-radius:8px;
-    background:#eaeff8;
+    background:#e3efec;
     color:var(--nav);
     font-size:.75rem;
     font-weight:800;
@@ -108,7 +119,7 @@
     gap:6px 14px;
     padding-bottom:14px;
     margin-bottom:30px;
-    border-bottom:2px solid #d9dfe9;
+    border-bottom:2px solid #d5dedb;
   }
   .unit-tag{
     font-size:.78rem;
@@ -251,7 +262,8 @@
     background:var(--c);
   }
 
-  /* 아래쪽 색 띠가 그대로 「학습 시작」 버튼 */
+  /* 아래쪽 색 띠가 그대로 「교사용 화면 열기」 버튼.
+     흰 글씨를 얹으므로 탭보다 한 단계 진한 --c-ink 를 쓴다(대비 4.5:1 이상). */
   .step-go{
     margin-top:auto;
     display:flex;
@@ -260,14 +272,14 @@
     gap:7px;
     padding:11px 12px;
     border-radius:8px;
-    background:var(--c);
+    background:var(--c-ink);
     color:#fff;
     font-size:.88rem;
     font-weight:700;
     text-decoration:none;
     transition:filter .15s ease;
   }
-  .step-go:hover{filter:brightness(.92);}
+  .step-go:hover{filter:brightness(1.12);}
   .step-go:focus-visible{outline:3px solid var(--c-ink);outline-offset:3px;}
   /* 카드 전체를 눌러도 열리게 한다 */
   .step-go::after{content:"";position:absolute;inset:0;border-radius:14px;}
@@ -311,17 +323,22 @@
     .step-card{transition:none;}
     .step-card:hover{transform:none;}
   }
+  @media print{
+    body{background:#fff;}
+    .hero{background:#17605C;}
+    .step-card{box-shadow:none;}
+  }
 </style>
 </head>
 <body>
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">고등학교 · 정보</p>
-    <h1>배우고, 탐구하고, 해결하는 정보 학습</h1>
+    <p class="eyebrow">고등학교 · 정보 · 교사용</p>
+    <h1>준비하고, 확인하고, 피드백하는 수업 관리</h1>
     <p>
-      정보 교과의 핵심 개념을 차근차근 배우고, 직접 탐구하며 문제를 해결하는 학습 공간입니다.<br>
-      아래에서 학습할 단원을 선택하고 나만의 속도로 학습을 시작해 보세요.
+      차시별 교사용 화면에서 형성평가 결과와 성취 수준, 지도 시 유의점을 확인할 수 있습니다.<br>
+      아래에서 수업할 차시를 선택하세요.
     </p>
   </div>
 </header>
@@ -329,9 +346,9 @@
 <section class="guide">
   <div class="wrap">
     <div class="guide-inner">
-      <p class="guide-item"><span class="guide-no">1</span><span><b>순서대로 진행</b>하세요. 앞 차시의 내용이 다음 차시로 이어집니다.</span></p>
-      <p class="guide-item"><span class="guide-no">2</span><span><b>어떤 기기든 괜찮습니다.</b> 노트북·태블릿·스마트폰 모두 사용할 수 있습니다.</span></p>
-      <p class="guide-item"><span class="guide-no">3</span><span><b>단계를 끝까지</b> 진행하고 마지막 화면에서 답안을 제출하세요.</span></p>
+      <p class="guide-item"><span class="guide-no">1</span><span><b>정답과 평가 기준</b>이 표시됩니다. 학생 화면에 미러링하지 마세요.</span></p>
+      <p class="guide-item"><span class="guide-no">2</span><span><b>차시 순서대로 운영</b>하세요. 각 단원의 마지막 차시는 앞 차시를 정리합니다.</span></p>
+      <p class="guide-item"><span class="guide-no">3</span><span><b>내용을 고친 뒤에는</b> <code>build-teacher.bat</code> 으로 이 사이트를 갱신하세요.</span></p>
     </div>
   </div>
 </section>
@@ -342,17 +359,18 @@
     <!-- ══ 단원: 다양한 제어 구조 ══════════════════════════════════
          단원을 새로 추가할 때는 이 <section class="unit"> 블록을 그대로
          복사해서 제목과 카드 내용만 바꾼다. 자세한 방법은 CLAUDE.md 참고.
+         학생용 링크·메뉴는 어떤 경우에도 넣지 않는다(교사 전용 사이트).
     ═════════════════════════════════════════════════════════════ -->
     <section class="unit">
       <div class="unit-head">
         <span class="unit-tag">단원</span>
         <h2>다양한 제어 구조</h2>
-        <p class="unit-sub">조건문과 반복문으로 문제를 해결하는 5차시 학습 · 각 차시는 6단계로 구성</p>
+        <p class="unit-sub">조건문과 반복문으로 문제를 해결하는 5차시 학습 · 차시마다 형성평가 결과 분석·정답표·지도 자료</p>
       </div>
 
       <ol class="steps" style="--n:5">
 
-        <li class="step" style="--c:#E9A83A; --c-ink:#B07716;">
+        <li class="step" style="--c:#2E8B84; --c-ink:#1F6560;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -370,11 +388,11 @@
               <li>조건문의 기본 구조와 참·거짓 판단</li>
               <li>비교 연산자로 조건 식 만들기</li>
             </ul>
-            <a class="step-go" href="./lesson3_7/lesson1/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_7/lesson1/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#5FA85C; --c-ink:#417F3F;">
+        <li class="step" style="--c:#3F9E7E; --c-ink:#2C735B;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -392,11 +410,11 @@
               <li>여러 갈래를 나누는 다중 조건문</li>
               <li>조건의 순서가 결과를 바꾸는 이유</li>
             </ul>
-            <a class="step-go" href="./lesson3_7/lesson2/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_7/lesson2/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#66B4CE; --c-ink:#31839E;">
+        <li class="step" style="--c:#57A86B; --c-ink:#3E7C4E;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -415,11 +433,11 @@
               <li>횟수가 정해진 반복과 조건에 따른 반복</li>
               <li>같은 문제를 두 방법으로 비교하기</li>
             </ul>
-            <a class="step-go" href="./lesson3_7/lesson3/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_7/lesson3/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#4272B0; --c-ink:#2F5789;">
+        <li class="step" style="--c:#6E9E52; --c-ink:#52753C;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -437,11 +455,11 @@
               <li>반복문 안에서 조건문으로 걸러내기</li>
               <li>개수 세기 · 합계 구하기 · 최댓값 찾기</li>
             </ul>
-            <a class="step-go" href="./lesson3_7/lesson4/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_7/lesson4/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#7B6C61; --c-ink:#5B4E45;">
+        <li class="step" style="--c:#8A9A45; --c-ink:#59662B;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -460,24 +478,26 @@
               <li>중첩 반복문으로 조합과 텍스트 도형 만들기</li>
               <li>1~5차시 내용을 정리하는 종합 평가</li>
             </ul>
-            <a class="step-go" href="./lesson3_7/lesson5/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_7/lesson5/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
       </ol>
     </section>
 
-    <!-- ══ 단원: 객체를 구현하는 클래스 ═══════════════════════════ -->
+    <!-- ══ 단원: 객체를 구현하는 클래스 ═══════════════════════════
+         학생용 링크·메뉴는 어떤 경우에도 넣지 않는다(교사 전용 사이트).
+    ═════════════════════════════════════════════════════════════ -->
     <section class="unit">
       <div class="unit-head">
         <span class="unit-tag">단원</span>
         <h2>객체를 구현하는 클래스</h2>
-        <p class="unit-sub">클래스와 객체로 문제를 해결하는 4차시 학습 · 3~4차시는 직접 만드는 프로젝트</p>
+        <p class="unit-sub">클래스와 객체로 문제를 해결하는 4차시 학습 · 차시마다 제출 결과 분석·정답표·지도 자료</p>
       </div>
 
       <ol class="steps" style="--n:4">
 
-        <li class="step" style="--c:#6F5DB8; --c-ink:#4E3F8C;">
+        <li class="step" style="--c:#3A7FA8; --c-ink:#245A7C;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -495,11 +515,11 @@
               <li>클래스·객체·인스턴스와 속성·기능 이해하기</li>
               <li>실생활 사물을 클래스와 객체로 표현하기</li>
             </ul>
-            <a class="step-go" href="./lesson3_8/lesson1/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_8/lesson1/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#8C5AAE; --c-ink:#663F82;">
+        <li class="step" style="--c:#4A6FA8; --c-ink:#2F4B7C;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -518,11 +538,11 @@
               <li>파이썬으로 클래스를 선언하고 객체 만들기</li>
               <li>속성 변경과 메소드 호출로 객체 다루기</li>
             </ul>
-            <a class="step-go" href="./lesson3_8/lesson2/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_8/lesson2/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#B05490; --c-ink:#84406C;">
+        <li class="step" style="--c:#5A63A4; --c-ink:#3A4079;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -539,13 +559,13 @@
             <h3 class="step-title">나만의 반려동물 클래스 만들기</h3>
             <ul class="step-keys">
               <li>속성과 메소드를 직접 설계하고 구현하기</li>
-              <li>하나의 클래스로 여러 인스턴스 확장하기</li>
+              <li>프로젝트 결과물과 형성평가를 함께 확인</li>
             </ul>
-            <a class="step-go" href="./lesson3_8/lesson3/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_8/lesson3/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#C05A54; --c-ink:#8E413D;">
+        <li class="step" style="--c:#6E5F9E; --c-ink:#473C74;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -561,22 +581,24 @@
             </div>
             <h3 class="step-title">우리 팀의 클래스로 생활 문제 해결하기</h3>
             <ul class="step-keys">
-              <li>모둠으로 설계하고 근거를 들어 설명하기</li>
-              <li>코드를 저장해 내 Python 에서 직접 실행하기</li>
+              <li>4인 1조 협력 프로젝트 · 모둠별 결과 확인</li>
+              <li>코드는 웹앱 밖의 학생 Python 에서 실행</li>
             </ul>
-            <a class="step-go" href="./lesson3_8/lesson4/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_8/lesson4/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
       </ol>
     </section>
 
-    <!-- ══ 단원: 프로그래밍과 연계한 AI·디지털 윤리 ═══════════════ -->
+    <!-- ══ 단원: 프로그래밍과 연계한 AI·디지털 윤리 ═══════════════
+         학생용 링크·메뉴는 어떤 경우에도 넣지 않는다(교사 전용 사이트).
+    ═════════════════════════════════════════════════════════════ -->
     <section class="unit">
       <div class="unit-head">
         <span class="unit-tag">단원</span>
         <h2>프로그래밍과 연계한 AI·디지털 윤리</h2>
-        <p class="unit-sub">AI가 만든 코드를 판단하고 토론하는 1차시 활동 · 앞의 두 단원 내용을 바탕으로 진행</p>
+        <p class="unit-sub">AI가 만든 코드를 판단하고 토론하는 1차시 활동 · 제출 현황과 주제별 분석 제공</p>
       </div>
 
       <!-- --n 은 「차시 수」가 아니라 「한 줄을 몇 칸으로 나눌지」다.
@@ -585,7 +607,7 @@
            2~4차시가 늘어도 --n 을 고치지 않고 <li> 만 더하면 된다. -->
       <ol class="steps" style="--n:4">
 
-        <li class="step" style="--c:#1F7A8C; --c-ink:#155A68;">
+        <li class="step" style="--c:#4A6A76; --c-ink:#2E464F;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -601,10 +623,10 @@
             </div>
             <h3 class="step-title">프로그래밍으로 생각하는 AI·디지털 윤리</h3>
             <ul class="step-keys">
-              <li>AI가 만든 코드를 근거 들어 판단하기</li>
-              <li>토론 뒤 나의 AI 활용 원칙 세우기</li>
+              <li>제출 현황과 학생 답변 확인하기</li>
+              <li>주제별 분석과 교사 핵심 정리 보기</li>
             </ul>
-            <a class="step-go" href="./lesson3_9/lesson1/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_9/lesson1/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
@@ -618,17 +640,18 @@
          6차시만 「센서 활용 1차시」라는 하위 계열의 시작이다.
          부제에 「6단계」를 쓰지 않은 이유: 1~5차시는 6단계지만
          6차시는 5단계다. 그래서 여섯이 공통인 순서를 적었다.
+         학생용 링크·메뉴는 어떤 경우에도 넣지 않는다(교사 전용 사이트).
     ═════════════════════════════════════════════════════════════ -->
     <section class="unit">
       <div class="unit-head">
         <span class="unit-tag">단원</span>
         <h2>피지컬 컴퓨팅과 아두이노</h2>
-        <p class="unit-sub">아두이노로 회로를 잇고 코드로 제어하는 6차시 학습 · 차시마다 회로 결선 → 코딩 → 실행·관찰</p>
+        <p class="unit-sub">아두이노로 회로를 잇고 코드로 제어하는 6차시 학습 · 차시마다 제출 결과 분석·정답표·지도 자료</p>
       </div>
 
       <ol class="steps" style="--n:6; --gap:18px; --th:4.26em">
 
-        <li class="step" style="--c:#373C7B; --c-ink:#21255E;">
+        <li class="step" style="--c:#469B70; --c-ink:#2A7550;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -643,14 +666,14 @@
             </div>
             <h3 class="step-title">피지컬 컴퓨팅의 원리와 아두이노 탐색</h3>
             <ul class="step-keys">
-              <li>입력·처리·출력으로 피지컬 컴퓨팅 이해하기</li>
-              <li>가상 회로 결선하고 아두이노 코드 실행하기</li>
+              <li>제출 현황과 평균·상위 3명 분석하기</li>
+              <li>많이 틀린 문제의 정답·해설 확인하기</li>
             </ul>
-            <a class="step-go" href="./lesson3_10/lesson1/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_10/lesson1/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#39487F; --c-ink:#223062;">
+        <li class="step" style="--c:#419075; --c-ink:#276954;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -665,14 +688,14 @@
             </div>
             <h3 class="step-title">디지털 출력으로 LED 불 켜기</h3>
             <ul class="step-keys">
-              <li>LED 극성과 저항의 역할 이해하기</li>
-              <li>회로 결선하고 LED 점멸 코드 작성하기</li>
+              <li>제출 결과로 요약·오답 문제 분석하기</li>
+              <li>회로·실험 정답과 오개념 지도 자료 보기</li>
             </ul>
-            <a class="step-go" href="./lesson3_10/lesson2/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_10/lesson2/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#3A5482; --c-ink:#243C66;">
+        <li class="step" style="--c:#3B8478; --c-ink:#235E55;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -687,14 +710,14 @@
             </div>
             <h3 class="step-title">피에조 스피커로 소리 내기</h3>
             <ul class="step-keys">
-              <li>주파수와 음높이의 관계를 파형으로 이해하기</li>
-              <li>tone()과 배열·반복문으로 음계 만들기</li>
+              <li>제출 답안으로 상위 3명·오답 문제 분석하기</li>
+              <li>회로 정답·기준 코드·오개념 지도 자료 보기</li>
             </ul>
-            <a class="step-go" href="./lesson3_10/lesson3/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_10/lesson3/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#3C6186; --c-ink:#25486A;">
+        <li class="step" style="--c:#367979; --c-ink:#1F5453;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -709,14 +732,14 @@
             </div>
             <h3 class="step-title">초음파 센서로 거리 측정하기</h3>
             <ul class="step-keys">
-              <li>초음파 왕복 시간으로 거리 구하는 원리 알기</li>
-              <li>센서 결선하고 pulseIn()으로 거리 재기</li>
+              <li>제출 현황과 문항별 정답률 한눈에 보기</li>
+              <li>회로·코드 오류와 오개념 지도 자료 확인하기</li>
             </ul>
-            <a class="step-go" href="./lesson3_10/lesson4/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_10/lesson4/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#3E6F89; --c-ink:#26556D;">
+        <li class="step" style="--c:#31646E; --c-ink:#1B434B;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -731,14 +754,14 @@
             </div>
             <h3 class="step-title">인체감지센서로 자동 조명 만들기</h3>
             <ul class="step-keys">
-              <li>PIR 센서 원리 알고 LED 회로 결선하기</li>
-              <li>digitalRead로 자동 조명 만들기</li>
+              <li>제출 현황·점수 분포와 오답 문항 확인하기</li>
+              <li>회로·코드 오류와 예측 대비표로 지도하기</li>
             </ul>
-            <a class="step-go" href="./lesson3_10/lesson5/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_10/lesson5/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
-        <li class="step" style="--c:#3F7D8D; --c-ink:#286371;">
+        <li class="step" style="--c:#2C5063; --c-ink:#173240;">
           <div class="step-card">
             <div class="step-head">
               <div>
@@ -753,10 +776,10 @@
             </div>
             <h3 class="step-title">두 센서로 환경 데이터 측정하기</h3>
             <ul class="step-keys">
-              <li>조도·토양수분 센서 잇고 값 읽어 보기</li>
-              <li>실험으로 기준값 정해 LED 제어하기</li>
+              <li>제출 결과로 오답·실습 완료율 보기</li>
+              <li>회로 정답·오개념 지도자료 확인하기</li>
             </ul>
-            <a class="step-go" href="./lesson3_10/lesson6/">학습 시작<span aria-hidden="true">→</span></a>
+            <a class="step-go" href="./lesson3_10/lesson6/">교사용 화면 열기<span aria-hidden="true">→</span></a>
           </div>
         </li>
 
@@ -768,8 +791,8 @@
 
 <footer>
   <div class="wrap">
-    <span>고등학교 정보 &middot; 학생용 학습 포털</span>
-    <span>학습 중 문제가 생기면 선생님께 알려 주세요.</span>
+    <span>고등학교 정보 &middot; 교사용 수업 관리 포털</span>
+    <span>교사 전용 &middot; 학생에게 주소를 공유하지 마세요.</span>
   </div>
 </footer>
 
